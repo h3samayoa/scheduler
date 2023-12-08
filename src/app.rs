@@ -1,6 +1,12 @@
+mod sched;
+
+use crate::sched::*;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
+use letptos_struct_table::*;
+use serde::{Deserialize, Serialize};
+use leptos::logging:log;
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -10,10 +16,13 @@ pub fn App() -> impl IntoView {
     view! {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
+        <head>
+            <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+        </head>
         <Stylesheet id="leptos" href="/pkg/leptos_start.css"/>
 
         // sets the document title
-        <Title text="Welcome to Leptos"/>
+        <Title text="schedule manager"/>
 
         // content for this welcome page
         <Router>
