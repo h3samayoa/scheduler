@@ -56,6 +56,8 @@ pub fn main() {
 
 #[cfg(all(not(feature = "ssr"), feature = "csr"))]
 pub fn main() {
+    _ = console_log::init_with_level(log::Level::Debug);
+    console_error_panic_hook::set_once();
     // a client-side main function is required for using `trunk serve`
     // prefer using `cargo leptos serve` instead
     // to run: `trunk serve --open --features csr`

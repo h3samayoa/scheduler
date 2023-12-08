@@ -8,10 +8,23 @@ use letptos_struct_table::*;
 use serde::{Deserialize, Serialize};
 use leptos::logging:log;
 
+#[derive(TableComponent, Serialize, Deserialize, Debug, Clone, Default, PartialEq)]
+pub struct Schedule {
+    #[table(key)]
+    #[table(renderer = "InputCellRenderer")]
+    pub name: String,
+    pub time: u32,
+    
+}
+
 #[component]
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
+
+    let on_change = move |evt: TableChangeEvent<Schedule, ScheduleColumnName, ScheduleColumnValue>| {
+        println!('test');
+    }
 
     view! {
         // injects a stylesheet into the document <head>
