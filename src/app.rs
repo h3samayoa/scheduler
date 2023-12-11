@@ -1,12 +1,12 @@
-mod sched;
+mod schedule;
 
-use crate::sched::*;
+use crate::schedule::*;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
-use letptos_struct_table::*;
+use leptos_struct_table::*;
 use serde::{Deserialize, Serialize};
-use leptos::logging:log;
+use leptos::logging::log;
 
 #[derive(TableComponent, Serialize, Deserialize, Debug, Clone, Default, PartialEq)]
 pub struct Schedule {
@@ -18,13 +18,13 @@ pub struct Schedule {
 }
 
 #[component]
-pub fn App() -> impl IntoView {
+pub fn App(cx: Scope) -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
 
     let on_change = move |evt: TableChangeEvent<Schedule, ScheduleColumnName, ScheduleColumnValue>| {
-        println!('test');
-    }
+        println!("test");
+    };
 
     view! {
         // injects a stylesheet into the document <head>
@@ -58,7 +58,7 @@ fn HomePage() -> impl IntoView {
 
     view! {
         <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
+        <ScheduleTable items=items on_change=on_change />
     }
 }
 

@@ -1,4 +1,4 @@
-#[cfg(feature = "ssr")]
+#cfg(feature = "ssr")]
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     use actix_files::Files;
@@ -69,3 +69,5 @@ pub fn main() {
 
     leptos::mount_to_body(App);
 }
+
+
